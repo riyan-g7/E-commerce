@@ -1,0 +1,63 @@
+﻿@model MainProject.Models.ViewModel.ProductViewModel
+
+<style>
+    .line1 {
+        clear: both;
+        height: 2px;
+        margin-bottom: 3%;
+        width: 100%;
+        background-color: #E3E9E9;
+    }
+</style>
+
+@{
+}
+
+
+<div class="card mt-4">
+    <div class="row">
+        <div class="col-md-6" style="padding-left:30px;">
+            <h1 class="text-info mt-2">@Model.product.Title</h1>
+            <div class="text-warning">
+                <h5>by @Model.product.Author</h5>
+            </div>
+        </div>
+        <div class="col-md-6 mt-4 text-right" style="padding-right:30px;">
+            <label class="btn bg-success text-white">@Model.product.Cover_Types.Ctname</label>
+            <label class="btn bg-warning text-white">@Model.product.Categories.Name</label>
+        </div>
+    </div>
+    <div class="line1 mt-4"></div>
+    <div class="row mb-4">
+        <div class="col-md-7" style="padding-left:40px">
+            <div class="text-secondary">
+                ISBN : <label>@Model.product.ISBN</label>
+            </div>
+            <div class="text-secondary">
+                List Price : $<label>@Model.product.ListPrice</label>
+            </div>
+            <div>
+                <table class="table bg-secondary">
+                    <tr>
+                        <th>Quantity</th>
+                        <th>1-49</th>
+                        <th>50-99</th>
+                        <th>100+</th>
+                    </tr>
+                    <tr class="text-danger">
+                        <td>Price</td>
+                        <td>@Model.product.Price</td>
+                        <td>@Model.product.Price50</td>
+                        <td>@Model.product.Price100</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                @Model.product.Description
+            </div>
+        </div>
+        <div class="col-md-5">
+            <img src="/media/@Model.product.Image" width="400px" />
+        </div>
+    </div>
+</div>

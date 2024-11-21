@@ -1,0 +1,123 @@
+﻿@model PaginatedList<MainProject.Models.Order>
+
+@{
+}
+
+<div class="card mt-4" style="padding:30px">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h2 class="text-left text-info">Order History</h2>
+        </div>
+        <div class="col-md-6 text-right">
+@*
+            <a asp-action="Allusers" asp-controller="Admin"
+               data-ajax="true"
+               data-ajax-method="get"
+               data-ajax-mode="replace"
+               data-ajax-update="#divID"
+               data-ajax-onbegin="clear()"
+               class="btn btn-outline-info">All</a>
+
+            <a asp-action="ProcessUsers" asp-controller="Admin"
+               data-ajax="true"
+               data-ajax-method="get"
+               data-ajax-mode="replace"
+               data-ajax-update="#divID"
+               data-ajax-onbegin="clear()"
+               class="btn btn-outline-info">In Process</a>
+
+            <a asp-action="PendingUsers" asp-controller="Admin"
+               data-ajax="true"
+               data-ajax-method="get"
+               data-ajax-mode="replace"
+               data-ajax-update="#divID"
+               data-ajax-onbegin="clear()"
+               class="btn btn-outline-info">Payment Pending</a>
+
+            <a asp-action="PaidUsers" asp-controller="Admin"
+               data-ajax="true"
+               data-ajax-method="get"
+               data-ajax-mode="replace"
+               data-ajax-update="#divID"
+               data-ajax-onbegin="clear()"
+               class="btn btn-outline-info">Completed</a>
+
+            <a asp-action="RejectedUsers" asp-controller="Admin"
+               data-ajax="true"
+               data-ajax-method="get"
+               data-ajax-mode="replace"
+               data-ajax-update="#divID"
+               data-ajax-onbegin="clear()"
+               class="btn btn-outline-info">Rejected</a>*@
+
+        </div>
+    </div>
+    <div id="loading" style="display:none;">Loading...</div>
+    <div id="divID">
+    </div>
+
+            @if (Model.Items.Count() < 1)
+            {
+        <label>
+            No Orders Exist.
+        </label> }
+                    else
+                    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>E-mail</th>
+                    <th>Order Status</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.Order_status</td>
+            <td>@item.Order_total</td>
+            <td class="text-center" width="35%">
+                @*<a asp-route-id="@item.Id" asp-action="OrderDetails" class="btn btn-success text-white">Details</a>*@
+            </td>
+        </tr>                }
+            </tbody>
+        </table>
+        <div class="text-center">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                if (i == Model.PageIndex)
+                {
+                    <button class="btn btn-success" disabled>@i</button>
+                }
+                else
+                {
+                    <a class="btn btn-outline-success" asp-action="OrderHistory" asp-route-pageIndex="@i"> @i </a>
+                }
+            }
+        </div>}
+
+
+
+
+    @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+
+            function clear() {
+                // Your clear logic
+                $("#divID").empty(); // Example clear logic
+            }
+
+        </script>
+    }
+</div>
+

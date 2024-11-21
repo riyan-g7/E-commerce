@@ -1,0 +1,192 @@
+﻿@model MainProject.Models.ViewModel.OrderViewModel
+
+@{
+}
+<div class="card mt-2">
+    <table class="bg-dark">
+        <tr>
+            <td style="padding-left:10px"><img src="~/media/cart2.png" width="18 " /> <label class="text-white"> Shopping Cart</label></td>
+            <td class="text-right" style="padding:10px"><a asp-action="OrderList" class="btn btn-outline-info text-info">Back to Orders</a></td>
+        </tr>
+    </table>
+    <form method="post">
+        <div class="container row" style="padding-top:20px">
+            <div class="col-md-6">
+                <h2 class="text-info">Pick Up Details</h2>
+                <div class="form-group row mt-4">
+                    <div class="col-md-4">
+                        <label asp-for="orders.Name" style="padding-top:5px"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Name" value="@Model.orders.Users.Name" class="form-control" />
+                        <span asp-validation-for="orders.Name"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="orders.Phone" style="padding-top:5px"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Phone" value="@Model.orders.Users.Phone" class="form-control" />
+                        <span asp-validation-for="orders.Phone"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="orders.Street" style="padding-top:5px"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Street" value="@Model.orders.Users.Street" class="form-control" />
+                        <span asp-validation-for="orders.Street"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ">
+                        <label asp-for="orders.City" style="padding-top:5px"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.City" value="@Model.orders.Users.City" class="form-control" />
+                        <span asp-validation-for="orders.City"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="orders.State" style="padding-top:5px"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.State" value="@Model.orders.Users.State" class="form-control" />
+                        <span asp-validation-for="orders.State"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Postal Code</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Zip_code" value="@Model.orders.Users.P_Code" class="form-control" />
+                        <span asp-validation-for="orders.Zip_code"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">E-mail</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Email" value="@Model.orders.Email" class="form-control" />
+                        <span asp-validation-for="orders.Email"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Order date</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Order_date" value="@Model.orders.Order_date" readonly class="form-control" />
+                        <span asp-validation-for="orders.Order_date"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Carrier</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Carrier" value="@Model.orders.Carrier" class="form-control" />
+                        <span asp-validation-for="orders.Carrier"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Tracking</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Tracking" value="@Model.orders.Tracking" class="form-control" />
+                        <span asp-validation-for="orders.Tracking"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Shipping Date</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Shipping_Date" value="@Model.orders.Shipping_Date" readonly class="form-control" />
+                        <span asp-validation-for="orders.Shipping_Date"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Transaction ID</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.TransactionID" value="@Model.orders.TransactionID" readonly  class="form-control" />
+                        <span asp-validation-for="orders.TransactionID"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Payment Due Date</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Payment_Due_Date" value="@Model.orders.Payment_Due_Date" readonly class="form-control" />
+                        <span asp-validation-for="orders.Payment_Due_Date"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label style="padding-top:5px">Payment Status</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="orders.Payment_Status" value="@Model.orders.Payment_Status" readonly class="form-control" />
+                        <span asp-validation-for="orders.Payment_Status"></span>
+                    </div>
+                </div>
+                <div>
+                    <input asp-for="orders.Id" value="@Model.orders.Id" hidden /> 
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-info ml-1 mb-4">Order Summary</h2>
+                @foreach (var item in Model.order_items)
+                {
+                    <div class="container border row ml-2">
+                        <div class="col-md-6" style="padding-top:4px">
+                            <h5 class="mt-1 text-info">@item.Products.Title</h5>
+                            <label>Price: $@item.Products.Price</label><br />
+                            <label>Quantity: @item.Count</label>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <h5 style="padding-top:24px" class="text-success">$@item.Total</h5>
+                        </div>
+                    </div>
+                }
+                <div class="container border row ml-2 mb-4 bg-info">
+                    <div class="col-md-6 mt-2 mb-2" style="padding-top:4px">
+                        <h4 class="text-white">Total(USD)</h4>
+                    </div>
+                    <div class="col-md-6 mt-2 mb-2 text-right">
+                        <h5 style="padding-top:4px" class="text-white">$@ViewBag.total</h5>
+                    </div>
+                </div>
+                @if (Model.orders.Order_status == "Completed")
+                {
+                    <div class="ml-3 mb-2">
+                        <a asp-action="StartProcess" asp-route-id="@Model.orders.Id" class="btn btn-primary form-control text-white">Start processing</a>
+                    </div>
+                    <div class="ml-3 mb-2">
+                        <a asp-action="CancelOrder" asp-route-id="@Model.orders.Id" class="btn btn-danger form-control text-white">Cancel order</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="ml-3 mb-2">
+                        <input type="submit" value="Ship order" class="btn btn-primary form-control text-white" />
+                    </div>
+                    <div class="ml-3 mb-2">
+                        <a asp-action="CancelOrder" asp-route-id="@Model.orders.Id" class="btn btn-danger form-control text-white">Cancel order</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+
+

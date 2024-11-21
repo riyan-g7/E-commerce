@@ -1,0 +1,86 @@
+﻿@model PaginatedList<MainProject.Models.Order>
+
+@{ var currentAction = ViewContext.RouteData.Values["action"].ToString(); }
+
+
+@if (Model.Items.Count() < 1)
+{
+<label>
+    No Orders Exist.
+</label> }
+else
+{
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>E-mail</th>
+            <th>Order Status</th>
+            <th>Amount</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+<tr>
+    <td>@item.Id</td>
+    <td>@item.Name</td>
+    <td>@item.Phone</td>
+    <td>@item.Email</td>
+    <td>@item.Order_status</td>
+    <td>@item.Order_total</td>
+    <td class="text-center" width="35%">
+        <a asp-route-id="@item.Id" asp-action="OrderDetails" class="btn btn-success text-white">Details</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+<div class="text-center">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+                @if (i == Model.PageIndex)
+                {
+                    <button class="btn btn-success" disabled>@i</button>
+                }
+                else
+                {
+                <a class="btn btn-outline-success" asp-action="@currentAction"
+                   asp-route-pageIndex="@i"
+                   data-ajax="true"
+                   data-ajax-method="GET"
+                   data-ajax-mode="replace"
+                   data-ajax-update="#divID">@i</a>
+                }
+         }
+</div>
+
+                @*<div class="text-center">
+                    @if (Model.HasPreviousPage)
+                    {
+    <a asp-action="@currentAction" asp-route-pageIndex="1" class="btn btn-outline-primary">First</a>
+                        <a asp-action="@currentAction" asp-route-pageIndex="@((Model.PageIndex - 1))" class="btn btn-outline-primary">Previous</a>}
+
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+    <button class="btn btn-success" disabled>@i</button> }
+else
+{
+<a asp-action="@currentAction" asp-route-pageIndex="@i" class="btn btn-outline-success">@i</a>}
+}
+
+                    @if (Model.HasNextPage)
+                    {
+    <a asp-action="@currentAction" asp-route-pageIndex="@((Model.PageIndex + 1))" class="btn btn-outline-primary">Next</a>
+                        <a asp-action="@currentAction" asp-route-pageIndex="@Model.TotalPages" class="btn btn-outline-primary">Last</a>}
+                </div>*@}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+
+

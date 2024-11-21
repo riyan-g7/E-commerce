@@ -1,0 +1,117 @@
+﻿@model MainProject.Models.Admin
+
+@{
+}
+
+<style>
+
+    .line1 {
+        clear: both;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 100%;
+        height: 2px;
+        background-color: #E3E9E9
+    }
+</style>
+
+<div class="container text-center">
+    <form method="post">
+        <div class="card mt-5" style="background-color:lightblue;padding:30px">
+            <div class="mt-4 text-center" style="background-color:lightskyblue">
+                <h3 class="mt-3 mb-3">Register an User Account</h3>
+            </div>
+            <div class="line1"></div>
+            <div class="text-center">
+                <input asp-for="Name" placeholder="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-center">
+                <input asp-for="Email" placeholder="E-mail" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-center">
+                <input asp-for="Phone" placeholder="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-center">
+                <input asp-for="Street" placeholder="Street Address" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-center">
+                <input asp-for="City" placeholder="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class=" mt-3 row">
+                <div class="col-md-6 text-right">
+                    <input asp-for="State" placeholder="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 text-left">
+                    <input asp-for="P_Code" placeholder="Postal code" class="form-control" />
+                    <span asp-validation-for="P_Code" class="text-danger"></span>
+                </div>
+            </div>
+            <div class=" mt-3 row">
+                <div class="col-md-6 text-right">
+                    <input type="password" asp-for="Password" placeholder="Password" id="pass" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 text-left">
+                    <input type="password" asp-for="Confirm" placeholder="Confirm Password" id="con" class="form-control" />
+                    <span asp-validation-for="Confirm" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mt-3 text-left">
+                Role
+            </div>
+            <div class="mt-3 text-left">
+                <select asp-for="Role" class="form-control" required>
+                    <option>--Select a role--</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Customer">Company Customer</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-left">
+                CompanyId
+            </div>
+            <div class="mt-3 text-left">
+                <select asp-for="CompanyId" asp-items="ViewBag.co" class="custom-select"></select>
+                <span asp-validation-for="CompanyId" class="text-danger"></span>
+            </div>
+            <div class="mt-3 text-center">
+                <input type="submit" id="bt" class="form-control btn btn-success" value="Register" />
+            </div>
+            <div class="mt-3 text-left">
+                By clicking<i> Register </i>you agree to our<a href=""> terms of service</a>
+            </div>
+            <div class="mt-3 text-left">
+                @ViewBag.msg
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+@*    $(document).ready(function () {
+        $("#con").change(function () {
+            var pass = $("#pass").val();
+            var con = $("#con").val();
+            if (con != pass) {
+                alert('Password so not match');
+                $("#bt").prop('disabled', true)
+                return true;
+            }
+            else {
+                $("#bt").prop('disabled', false)
+                return false;
+            }
+        })
+    })*@
+
+</script>
+

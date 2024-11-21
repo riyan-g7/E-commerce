@@ -1,0 +1,102 @@
+﻿@model MainProject.Models.Company
+
+<style>
+    .line1 {
+        clear: both;
+        height: 2px;
+        margin-bottom: 3%;
+        width: 100%;
+        background-color: #E3E9E9;
+    }
+</style>
+
+@{
+}
+<div class="card mt-4" style="padding:30px">
+    <h2 class="text-info">Edit Company</h2>
+    <div class="line1"></div>
+    <form method="post">
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label asp-for="Street"></label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label asp-for="City"></label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label asp-for="State"></label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label>Postal code</label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="P_code" class="form-control" />
+                <span asp-validation-for="P_code" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label asp-for="Mobile"></label>
+            </div>
+            <div class="col-md-4">
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+                <label>Authorized</label>
+            </div>
+            <div class="col-md-4">
+                <input type="checkbox" asp-for="IsAuthorized" class="form-control" />
+                <span asp-validation-for="IsAuthorized" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-2">
+
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Update" asp-action="EditCompany" class="form-control btn btn-success" />
+            </div>
+            <div class="col-md-2">
+                <a asp-action="Company_list" class="form-control btn btn-dark">Back to List</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2 mt-1">
+
+            </div>
+            <div class="col-md-4">
+                @ViewBag.msg
+            </div>
+        </div>
+    </form>
+</div>

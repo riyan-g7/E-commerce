@@ -1,0 +1,146 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+@{
+    var id = Context.Session.GetInt32("SessionId");
+    var role = Context.Session.GetString("SessionRole");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MainProject</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-toggle {
+            color: white;
+            opacity: 0.5;
+        }
+
+        .dropdown:hover > .dropdown-toggle {
+            color: white;
+            opacity: 1.0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-info">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:white">E-Commerce</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse">
+                @if (role == "Admin")
+                {
+                    <ul class=" nav navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" asp-area="" asp-controller="Admin" asp-action="Admin_home">Home</a>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Content Management
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Category_list">Category</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Cover_list">Cover Type</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Product_list">Product</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Company_list">Company</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                User/Company
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li> <a class="dropdown-item" asp-controller="Admin" asp-action="AddCompany">Company</a></li>
+                                <li><a class="dropdown-item">User</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" asp-area="" asp-controller="Admin" asp-action="OrderList">Manage Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action=""><img src="~/media/cart2.png" width="25" /></a>
+                        </li>
+                    </ul>
+                }
+                else if (role == "User")
+                {
+            <ul class=" nav navbar-nav ">
+                <li class="nav-item">
+                    <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="User_home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="OrderHistory">Order History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="MyProfile">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="ChangePass">Change Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="User" asp-action="ViewCart"><img src="~/media/cart2.png" width="25" /></a>
+                </li>
+            </ul>
+                }
+                else
+                {
+                    <ul class=" nav navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50" asp-area="" asp-controller="Home" asp-action="">Home</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+            @if (id == null)
+            {
+                <ul class=" nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="Login">Login</a>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class=" nav navbar-nav">
+                    <li class="nav-item">
+                        <label></label>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white-50" asp-area="" asp-controller="User" asp-action="Logout" onclick="return confirm('Are you sure you want to logout?')">Logout</a>
+                    </li>
+                </ul>
+            }
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white-50 bg-info">
+        &nbsp; &copy; 2024 - E-Commerce
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
